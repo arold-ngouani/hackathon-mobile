@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
                 val client = OkHttpClient()
                 // Create JSON object
 
-
+                codeTextView.text = "Scanne en cours ..."
 
                 val jsonObject = JSONObject().apply {
                     put("token", token.toString())
