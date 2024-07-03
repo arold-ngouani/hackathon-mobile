@@ -102,7 +102,10 @@ class MainActivity : AppCompatActivity() {
         }
         startActivity(intent)
     }
-
+    private fun addSpaceBetweenChars(input: String?): String {
+        val safeInput = input ?: ""
+        return safeInput.toCharArray().joinToString("  ")
+    }
     private fun resolveIntent(intent: Intent) {
         val validActions = listOf(
             NfcAdapter.ACTION_TAG_DISCOVERED,
@@ -161,7 +164,7 @@ class MainActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             val responseText = response.body?.string()
                             runOnUiThread {
-                                codeValueTextView.text = responseText
+                                codeValueTextView.text = addSpaceBetweenChars(responseText)
                                 codeTextView.text = "Code d'authentification"
                             }
                         } else {
